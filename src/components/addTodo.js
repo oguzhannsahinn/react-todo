@@ -33,7 +33,7 @@ class AddTodo extends Component {
         const {name, description, expire, completed} = this.state;
 
         const newTodo = {
-            id: document.querySelectorAll(".todo-item").length + 1,
+            id: Math.random(),
             name : name,
             description : description,
             expire : expire,

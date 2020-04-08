@@ -8,10 +8,10 @@ class Todo extends Component {
         deleteTodo(id);
     }
 
-    onCompleteClick(id, e) {
+    onCompleteClick(index, e) {
         const {markAsComplete} = this.props;
 
-        markAsComplete(id);
+        markAsComplete(index);
     }
 
     render() {
@@ -26,7 +26,7 @@ class Todo extends Component {
                 <td>{expire}</td>
                 <td>{completed ? "completed" : "uncompleted"}</td>
                 <td>
-                    <button className="btn btn-success mr-2" onClick={this.onCompleteClick.bind(this, id)} style={{fontWeight:"bold"}}>🗸</button>
+                    <button className={"btn mr-2 " + (completed ? "btn-dark" : "btn-success")} onClick={this.onCompleteClick.bind(this, index)} style={{fontWeight:"bold"}}>🗸</button>
                     <button className="btn btn-danger" onClick={this.onDeleteClick.bind(this, id)} > Delete </button>
                 </td>
             </tr>

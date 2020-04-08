@@ -19,10 +19,10 @@ class Todos extends Component {
     };
  
 
-    onCompleteClick(id, e) {
+    onCompleteClick(e) {
         const {markAsComplete} = this.props;
 
-        markAsComplete(id);
+        markAsComplete();
     }
 
     render() {

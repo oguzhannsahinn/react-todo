@@ -17,7 +17,7 @@ class Home extends Component {
                     name: "stay home",
                     description: "COVID 19",
                     expire: "2020-06-15",
-                    completed: false 
+                    completed: false
                 },
                 {
                     id: 2,
@@ -36,14 +36,14 @@ class Home extends Component {
             ]
         }
 
-         this.deleteTodo = this.deleteTodo.bind(this);
+        this.deleteTodo = this.deleteTodo.bind(this);
         this.addNewTodo = this.addNewTodo.bind(this);
         this.markAsComplete = this.markAsComplete.bind(this); 
     }
  
     deleteTodo(id) {
         let updatedTodos = this.state.todos;
-
+ 
         updatedTodos = updatedTodos.filter((todo) => todo.id !== id)
         
         this.setState({
@@ -51,10 +51,10 @@ class Home extends Component {
         })
     }
 
-    markAsComplete(index, id) {
+    markAsComplete(index) {
         
         let updatedTodos = this.state.todos;
-
+  
         updatedTodos[index-1].completed = !updatedTodos[index-1].completed;
 
         this.setState({
