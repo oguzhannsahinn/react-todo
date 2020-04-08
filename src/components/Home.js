@@ -16,46 +16,30 @@ class Home extends Component {
                     id: 1,
                     name: "stay home",
                     description: "COVID 19",
-                    expire: "30 April",
+                    expire: "2020-06-15",
                     completed: false 
                 },
                 {
                     id: 2,
-                    name: "virgin",
-                    description: "COVID 19",
-                    expire: "30 April",
+                    name: "study to react",
+                    description: "hooks & redux",
+                    expire: "2020-04-14",
                     completed: false 
                 },
                 {
                     id: 3,
-                    name: "car",
-                    description: "COVID 19",
-                    expire: "30 April",
+                    name: "read book",
+                    description: "1984, George Orwell",
+                    expire: "2020-04-22",
                     completed: false 
                 }
             ]
         }
 
-        // this.searchTodo = this.searchTodo.bind(this);
-        this.deleteTodo = this.deleteTodo.bind(this);
+         this.deleteTodo = this.deleteTodo.bind(this);
         this.addNewTodo = this.addNewTodo.bind(this);
         this.markAsComplete = this.markAsComplete.bind(this); 
     }
-
-    // searchTodo(todoList) {
-    //     console.log(todoList)
-    //     if(todoList != null) {
-
-    //         this.setState({
-    //             todos : todoList
-    //         })
-    //     }else {
-    //         this.setState({
-    //             todos: this.todos
-    //         })
-    //     }
-    // }
- 
  
     deleteTodo(id) {
         let updatedTodos = this.state.todos;
