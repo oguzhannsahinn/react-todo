@@ -11,38 +11,52 @@ class Home extends Component {
         this.logout = this.logout.bind(this);
 
         this.state = {
-            inputValue : "",
             todos: [
                 {
                     id: 1,
-                    name: "ahmet",
-                    description: "COVID 19",
-                    expire: "30 April",
-                    status: false ? "completed" : "uncompleted"
-                },
-                {
-                    id: 2,
-                    name: "home",
-                    description: "COVID 19",
-                    expire: "30 April",
-                    status: false ? "completed" : "uncompleted"
-                },
-                {
-                    id: 3,
                     name: "stay home",
                     description: "COVID 19",
                     expire: "30 April",
-                    status: false ? "completed" : "uncompleted"
+                    completed: false 
+                },
+                {
+                    id: 2,
+                    name: "virgin",
+                    description: "COVID 19",
+                    expire: "30 April",
+                    completed: false 
+                },
+                {
+                    id: 3,
+                    name: "car",
+                    description: "COVID 19",
+                    expire: "30 April",
+                    completed: false 
                 }
             ]
         }
 
+        // this.searchTodo = this.searchTodo.bind(this);
         this.deleteTodo = this.deleteTodo.bind(this);
         this.addNewTodo = this.addNewTodo.bind(this);
-        this.markAsComplete = this.markAsComplete.bind(this);
-        this.searchByName = this.searchByName.bind(this);
+        this.markAsComplete = this.markAsComplete.bind(this); 
     }
 
+    // searchTodo(todoList) {
+    //     console.log(todoList)
+    //     if(todoList != null) {
+
+    //         this.setState({
+    //             todos : todoList
+    //         })
+    //     }else {
+    //         this.setState({
+    //             todos: this.todos
+    //         })
+    //     }
+    // }
+ 
+ 
     deleteTodo(id) {
         let updatedTodos = this.state.todos;
 
@@ -57,12 +71,13 @@ class Home extends Component {
         
         let updatedTodos = this.state.todos;
 
-        updatedTodos[index-1].status = "completed";
+        updatedTodos[index-1].completed = !updatedTodos[index-1].completed;
 
         this.setState({
             todos : updatedTodos
         })
     }
+
 
     addNewTodo(newTodo) {
         let updatedTodos = this.state.todos;
@@ -74,21 +89,6 @@ class Home extends Component {
         })
     }
 
-    searchByName() {
-        let updatedTodos = this.state.todos;
-
-        if(this.state.inputValue === "") {
-            updatedTodos = this.state.todos;
-        }else {
-           updatedTodos = updatedTodos.filter( (todo) => todo.name === this.state.inputValue)
-        }
-        
-        this.setState({
-            todos: updatedTodos
-        })
-    }
-
-
     logout(e) {
         e.preventDefault();
         fire.auth().signOut(); 
@@ -96,30 +96,11 @@ class Home extends Component {
 
     render() {
 
-        const searchInputStyle = {
-            padding: "7px",
-            marginRight: "5px",
-            border:"none",
-            borderBottom: "1px solid #aaa",
-            outline: "none"
-        }
-
         return(
             <div>
                 <h3 className="mt-5"> Huawei Todo App </h3>
                 <hr/>
-                <input 
-                    type="text"
-                    name="search"
-                    placeholder=" Search name"
-                    id="search"
-                    style={searchInputStyle}
-                    value={this.state.inputValue}
-                    onChange={text => this.setState({
-                        inputValue: text.target.value
-                    })}
-                />
-                <button className="btn btn-primary" onClick={this.searchByName}>Search</button>
+
                 <Todos todos = {this.state.todos} deleteTodo={this.deleteTodo} markAsComplete={this.markAsComplete} />
                 <hr/>
                 <AddTodo addNewTodo = {this.addNewTodo} />

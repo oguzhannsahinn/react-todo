@@ -6,51 +6,45 @@ class AddTodo extends Component {
         name : "",
         description : "",
         expire : "",
-        status : "uncompleted",
+        completed : false,
         showAddTodo : false
     }
 
     onNameChange(e) {
-
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
     onDescriptionChange(e) {
-
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
-    onExpireChange(e) {
-        
+    onExpireChange(e) {        
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
-    onAddSubmit(e) {
-        
+    onAddSubmit(e) {        
         const {addNewTodo} = this.props;
-        const {name, description, expire, status} = this.state;
+        const {name, description, expire, completed} = this.state;
 
         const newTodo = {
             id: document.querySelectorAll(".todo-item").length + 1,
             name : name,
             description : description,
             expire : expire,
-            status : status
+            completed : completed
         }
 
         addNewTodo(newTodo);
-
         e.preventDefault();
     }
 
-    _showAddTodo() {
-        
+    _showAddTodo() {        
         this.setState({
             showAddTodo : true
         })
